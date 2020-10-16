@@ -23,8 +23,8 @@ const basicAuth = require('express-basic-auth')
 // this will will return a 401 when 
 router.use(basicAuth({
   users: {
-      'caleb': 'yourehired',
-      '': 'testing',
+      'caleb': 'testing',
+      '': 'mysecrettoken',
   },
   challenge: true,
   unauthorizedResponse: getUnauthorizedResponse
