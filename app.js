@@ -28,11 +28,11 @@ const counter = new client.Counter({
   help: 'The total number of processed requests'
 });
 
-const histogram = new client.Histogram({
-  name: 'node_request_duration_seconds',
-  help: 'Histogram for the duration in seconds.',
-  buckets: [1, 2, 5, 6, 10]
-});
+// const histogram = new client.Histogram({
+//   name: 'node_request_duration_seconds',
+//   help: 'Histogram for the duration in seconds.',
+//   buckets: [1, 2, 5, 6, 10]
+// });
 
 
 
