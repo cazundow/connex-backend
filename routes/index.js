@@ -10,15 +10,21 @@ const basicAuth = require('express-basic-auth')
 
 // authenticate
 // TODO: use basic auth middleware
-const auth = (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  console.log(authHeader);
-  if (authHeader != 'mysecrettoken') return res.status(403).json({ status: 403,message: 'FORBIDDEN'})
+// const auth = (req, res, next) => {
+//   const authHeader = req.headers.authorization;
+//   console.log(authHeader);
+//   if (authHeader != 'mysecrettoken') return res.status(403).json({ status: 403,message: 'FORBIDDEN'})
 
-  req.authorizated = true; 
-  next()
+//   req.authorizated = true; 
+//   next()
 
-}
+// }
+
+router.use(basicAuth({
+  users: { '': 'mysecrettoken' },
+  unauthorizedResponse: "FORBIDDEN"
+
+}))
 router.use(cors())
 
 
@@ -31,7 +37,7 @@ function getUnauthorizedResponse(req, res) {
 
 
 /* GET root. */
-router.get('/', auth, function(req, res, next) {
+router.get('/', function(req, res, next) {
   const date = Date.now(); 
   //return formatted response
   res.json(DateTimeResponse(date))

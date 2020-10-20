@@ -8,7 +8,6 @@ const collectDefaultMetrics = client.collectDefaultMetrics;
 collectDefaultMetrics({ timeout: 5000 });
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -37,7 +36,6 @@ const counter = new client.Counter({
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 app.get('/metrics', (req, res) => {
   counter.inc();
